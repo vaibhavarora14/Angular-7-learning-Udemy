@@ -1,0 +1,16 @@
+<p *ngIf="buttonClicked === true; else noPassword" >
+  secret password = "tune"
+</p>
+
+<ng-template #noPassword>
+  <p>
+    No password
+  </p>
+</ng-template>
+
+
+<button type="button" (click)="displayDetails()"> Display details </button>
+
+<div *ngFor="let clicks of totalClicks; let i=index">
+   <p [ngStyle]="{'background-color': (i > 3) ? 'blue' : ''}" [ngClass]="{'white-color': (i > 3)}"> {{clicks}} </p>
+</div>
