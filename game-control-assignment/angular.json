@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "../game-control-assignment/node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": []

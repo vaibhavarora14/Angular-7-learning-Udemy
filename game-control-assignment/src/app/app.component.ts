@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'game-control-assignment';
+
+  numbers: number[];
+
+  updateTimer(numbers: number[]) {
+    this.numbers = numbers;
+  }
 }
