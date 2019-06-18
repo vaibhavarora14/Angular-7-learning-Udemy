@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopping-recipe-course';
+  page: string;
+
+  constructor() {
+    this.page = 'recipe';
+  }
+
+  navigate(page: string) {
+    this.page = page;
+  }
 }
