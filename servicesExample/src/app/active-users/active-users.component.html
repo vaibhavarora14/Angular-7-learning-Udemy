@@ -1,0 +1,7 @@
+<h3> Active users </h3>
+<div class="list-group mb-2">
+  <div class="list-group-item" *ngFor="let user of users">
+    <span class="border-right border-dark pr-1 mr-2"> {{user.name}} </span>
+    <a name="button_{{user.id}}" id="button_{{user.id}}" (click)="switchState(user.id, 'active')" class="" href="#" role="button">Set to inactive</a>
+  </div>
+</div>
