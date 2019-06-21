@@ -1,6 +1,13 @@
 <div class="row">
-  <div class="col-12" *ngIf="recipe != undefined">
-    {{ recipe.description }}
+  <div *ngIf="recipe != undefined">
+      <div class="col-12">
+          {{ recipe.description }}
+        </div>
+        <ul class="list-group" *ngIf="recipe.ingredients != undefined">
+          <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+            {{ ingredient.name }} - {{ ingredient.amount }}
+          </li>
+        </ul>
   </div>
 </div>
 <div class="row">
@@ -12,7 +19,7 @@
           Manage recipe
         </button>
         <div class="dropdown-menu" aria-labelledby="manageRecipe">
-          <a href="#" class="dropdown-item">Action</a>
+          <a href="#" class="dropdown-item" (click)="addIngredientToSL()">To Shopping list</a>
           <a href="#" class="dropdown-item">Another action</a>
           <a href="#" class="dropdown-item">Something else here</a>
         </div>
