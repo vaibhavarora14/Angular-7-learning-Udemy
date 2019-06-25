@@ -2,8 +2,13 @@
   <div class="container">
     <div fxLayout="row">
       <div fxFlexOffset="10%">
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Filter" name="filter" [(ngModel)]="filteredStatus" type="text">
+          </mat-form-field>
+        </form>
         <mat-list role="list">
-          <ng-container *ngFor="let server of servers">
+          <ng-container *ngFor="let server of servers | filter:filteredStatus:'status'">
               <mat-list-item role="listitem" [ngClass]="getStatusClasses(server)">
                   <strong> {{server.name | shorten:15}} </strong> | 
                   {{server.instanceType | uppercase}} | 
