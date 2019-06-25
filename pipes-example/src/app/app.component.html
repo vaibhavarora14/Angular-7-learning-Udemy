@@ -6,18 +6,24 @@
           <mat-form-field>
             <input matInput placeholder="Filter" name="filter" [(ngModel)]="filteredStatus" type="text">
           </mat-form-field>
+          <mat-form-field class="ml-1">
+            <mat-icon matSuffix>search</mat-icon>
+            <input matInput placeholder="Search" name="search" type="search" [(ngModel)]="searchValue">
+          </mat-form-field>
+          {{searchValue}}
           <br>
           <div>
               <button mat-raised-button color="primary" (click)="addServer()">Add server</button>
+              <button mat-button (click)="sortList()">Sort list</button>
           </div>
           
           <h2> App status: {{appStatus | async}} </h2>
         </form>
         <mat-list role="list">
-          <ng-container *ngFor="let server of servers | filter:filteredStatus:'status'">
+          <ng-container *ngFor="let server of servers | sort:sortStatus | filter:filteredStatus:'status' | search:searchValue:'name' ">
               <mat-list-item role="listitem" [ngClass]="getStatusClasses(server)">
                   <strong> {{server.name | shorten:15}} </strong> | 
-                  {{server.instanceType | uppercase}} | 
+                  {{server.instanceType | uppercase | reverse}} | 
                   {{server.started | date:'fullDate' | uppercase}}
                   <mat-chip-list [ngClass]="{'ml-1': true}">
                       <mat-chip color="primary"> {{server.status}} </mat-chip>

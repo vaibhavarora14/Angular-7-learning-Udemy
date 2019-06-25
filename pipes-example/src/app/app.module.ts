@@ -8,17 +8,24 @@ import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { ShortenPipe } from './shorten.pipe';
 import { FilterPipe } from './filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { ReversePipe } from './reverse.pipe';
+import { SortPipe } from './sort.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShortenPipe,
     FilterPipe,
+    ReversePipe,
+    SortPipe,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     MatChipsModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     FlexLayoutModule,
   ],
   providers: [],

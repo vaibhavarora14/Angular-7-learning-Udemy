@@ -33,7 +33,9 @@ export class AppComponent {
     },
   ];
 
-  filteredStatus: string = '';
+  filteredStatus = '';
+  sortStatus = false;
+  searchValue = '';
 
   appStatus = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -56,6 +58,10 @@ export class AppComponent {
       status: 'critical',
       started: new Date(20, 5, 2018),
     });
+  }
+
+  sortList() {
+      this.sortStatus = !this.sortStatus;
   }
 
 }
