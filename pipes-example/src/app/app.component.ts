@@ -43,4 +43,13 @@ export class AppComponent {
     };
   }
 
+  addServer() {
+    this.servers.push({
+      name: 'dummy server',
+      instanceType: 'Dummy Server environment',
+      status: 'critical',
+      started: new Date(20, 5, 2018),
+    });
+  }
+
 }

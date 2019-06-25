@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { ShortenPipe } from './shorten.pipe';
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatChipsModule,
     MatInputModule,
+    MatButtonModule,
     FlexLayoutModule,
   ],
   providers: [],

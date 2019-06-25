@@ -6,6 +6,11 @@
           <mat-form-field>
             <input matInput placeholder="Filter" name="filter" [(ngModel)]="filteredStatus" type="text">
           </mat-form-field>
+          <hr>
+          <div>
+              <button mat-raised-button color="primary" (click)="addServer()">Add server</button>
+          </div>
+          <hr>
         </form>
         <mat-list role="list">
           <ng-container *ngFor="let server of servers | filter:filteredStatus:'status'">
