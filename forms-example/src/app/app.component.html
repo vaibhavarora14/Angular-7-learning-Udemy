@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <form #f="ngForm">
         <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
@@ -14,7 +14,7 @@
               required
             />
           </div>
-          <button class="btn btn-default" type="button">
+          <button class="btn btn-default" type="button" (click)="suggestUserName()">
             Suggest an Username
           </button>
           <div class="form-group">
@@ -52,13 +52,61 @@
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
-            <input type="radio" name="gender" ngModel [value]="gender" /> {{gender}}
+            <input type="radio" name="gender" ngModel [value]="gender" /> {{ gender }}
           </label>
         </div>
         <button [disabled]="!f.valid" class="btn btn-primary" type="submit">
           Submit
         </button>
       </form>
+
+      <form (ngSubmit)="onSubmit(secondForm)" #secondForm="ngForm" class="mt-4">
+        <div class="form-group">
+          <label for="emailSecond"> Email address </label>
+          <input
+            class="form-control"
+            type="email"
+            name="emailSecond"
+            id="emailSecond"
+            required
+            ngModel
+            #emailSecond="ngModel"
+            email
+          />
+          <span class="text-danger" *ngIf="!emailSecond.valid && emailSecond.touched"> Enter correct email </span>
+        </div>
+        <div class="form-group">
+          <label for="subscription">Select Subscription</label>
+          <select class="form-control" name="subscription" id="subscription" ngModel>
+            <option *ngFor="let subscription of subscriptions" [value]="subscription"
+              >{{ subscription }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password"> Enter password </label>
+          <input type="password" class="form-control" name="password" id="password" required ngModel #password="ngModel">
+          <span class="text-danger" *ngIf="!password.valid && password.touched"> Enter password </span>
+        </div>
+        <p *ngIf="!secondForm.valid && secondForm.touched" class="text-danger">
+          Form is invalid, fillup required fields before moving forward
+        </p>
+        <div class="form-group">
+          <button type="submit" name="submitSecond" id="submitSecond" class="btn btn-primary btn-lg btn-block" [disabled]="!secondForm.valid">
+            Submit second form
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="subscriptionData">
+      <div>Email address is {{subscriptionData.email}}</div>
+      <div>Subscription is {{subscriptionData.subscription}} </div>
+      <div>
+        Password is {{subscriptionData.password}}
+      </div>
     </div>
   </div>
 </div>

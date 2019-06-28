@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterContentInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -6,15 +6,45 @@ import { NgForm } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   defaultQuestion = 'pet';
   genders = ['male', 'female'];
+  @ViewChild('f') signupForm: NgForm;
+
+  @ViewChild('secondForm') secondForm: NgForm;
+  subscriptions = ['Basic', 'Advanced', 'Pro'];
+
+  subscriptionData: {email: string, subscription: string, password: string};
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName,
+        email: '',
+      },
+    });
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.secondForm.form.patchValue({
+        subscription: 'Advanced',
+      });
+    });
+  }
+
+  onDummy() {
+    this.secondForm.form.patchValue({
+      subscription: 'Advanced',
+    });
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
+    this.subscriptionData = {
+      email: form.value.emailSecond,
+      subscription: form.value.subscription,
+      password: form.value.password
+    };
   }
 }
