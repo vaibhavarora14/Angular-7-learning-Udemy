@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"html.format.wrapAttributes": "aligned-multiple",
+		"editor.wordWrapColumn": 100,
+		"editor.wordWrap": "wordWrapColumn",
+		"html.format.wrapLineLength": 100
+	}
+}
