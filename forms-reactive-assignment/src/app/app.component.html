@@ -1,20 +1,52 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container-fluid mt-3">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div [formGroup]="projectForm">
+        <div class="form-group">
+          <label for="name">Project Name</label>
+          <input class="form-control" id="name" name="name" formControlName="name">
+          <div class="help-block"
+               *ngIf="!projectForm.get('name').valid && projectForm.get('name').touched">
+            <div *ngIf="projectForm.get('name').getError('required')">
+              This field is required!
+            </div>
+            <div *ngIf="projectForm.get('name').getError('forbiddenName')">
+              This name is invalid!
+            </div>
+          </div>
+          <label for="nameAsync">Project Name (Async one)</label>
+          <input class="form-control" id="nameAsync" name="nameAsync" formControlName="nameAsync">
+          <div class="help-block"
+               *ngIf="!projectForm.get('nameAsync').valid && projectForm.get('nameAsync').touched">
+            <div *ngIf="projectForm.get('nameAsync').getError('required')">
+              This field is required!
+            </div>
+            <div *ngIf="projectForm.get('nameAsync').getError('forbiddenName')">
+              This name is invalid!
+            </div>
+          </div>
+          <label for="email">Email</label>
+          <input class="form-control" id="email" name="email" formControlName="email">
+          <div class="help-block"
+               *ngIf="!projectForm.get('email').valid && projectForm.get('email').touched">
+            <div *ngIf="projectForm.get('email').getError('required')">
+              This field is required!
+            </div>
+            <div *ngIf="projectForm.get('nameAsync').getError('email')">
+              This email is invalid!
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="status">Project Status</label>
+          <select class="form-control" name="status" id="status" formControlName="status">
+            <option *ngFor="let status of statuses"> {{status}} </option>
+          </select>
+        </div>
+        <button type="button" name="submit" id="submit" class="btn btn-primary btn-lg btn-block"
+                (click)="onSubmit()" [disabled]="!projectForm.valid"> Submit </button>
+      </div>
 
+    </div>
+  </div>
+</div>
