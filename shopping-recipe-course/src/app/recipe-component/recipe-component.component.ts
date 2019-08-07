@@ -10,8 +10,14 @@ import { RecipeService } from './recipe.service';
 })
 export class RecipeComponentComponent implements OnInit {
   recipe: Recipe;
+  recipeEditMode: boolean;
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService) {
+    this.recipeEditMode = recipeService.recipeEditMode;
+    recipeService.recipdeEditModeChanges.subscribe(
+      (value: boolean) => this.recipeEditMode = value
+    );
+  }
 
   ngOnInit(): void {
     this.recipeService.recipeSelected.subscribe(

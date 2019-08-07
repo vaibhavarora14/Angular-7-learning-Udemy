@@ -5,18 +5,18 @@
 
   <div class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="nav navbar-nav w-100">
-      <li class="nav-item" [ngClass]="{'active': selectedPage === 'recipe'}">
-        <a class="nav-link" href="#" (click)="navigate('recipe')"> Recipes <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0)" routerLink="/recipes"> Recipes <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" (click)="navigate('shopping')" [ngClass]="{'active': selectedPage === 'shopping'}"> Shopping list </a>
+        <a class="nav-link" href="javascript:void(0)" routerLink="/shopping-list" routerLinkActive="active"> Shopping list </a>
       </li>
       <li class="nav-item dropdown ml-auto">
-        <a appDropdown class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        <a appDropdown class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true"
           aria-expanded="false">Manage</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Save data</a>
-          <a class="dropdown-item" href="#">Fetch data</a>
+          <a class="dropdown-item" href="javascript:void(0)">Save data</a>
+          <a class="dropdown-item" href="javascript:void(0)">Fetch data</a>
         </div>
       </li>
     </ul>

@@ -9,13 +9,13 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 })
 export class AppComponent {
   title = 'shopping-recipe-course';
-  page: string;
+  // page: string;
 
-  constructor() {
-    this.page = 'recipe';
-  }
+  // constructor() {
+  //   this.page = 'recipe';
+  // }
 
-  navigate(page: string) {
-    this.page = page;
-  }
+  // navigate(page: string) {
+  //   this.page = page;
+  // }
 }

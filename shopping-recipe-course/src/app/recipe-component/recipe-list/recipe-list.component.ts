@@ -11,19 +11,8 @@ export class RecipeListComponent implements OnInit {
 
   recipes: Recipe[];
 
-  // recipes: Recipe[] = [
-  //   new Recipe('fries', 'French fries', 'Potato fries 😊',
-  //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3fuQL9mTOM2-wboaG-I0_TPuWciCFzlfN4AnudNyOFVawBEk'),
-  //   new Recipe('rice', 'Rice', 'Indian rice',
-  //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrCP2arFOSucfKFmPYNIADFYIwcxujes9W9Ij-prRKksIwiUbCSg'),
-  // ];
-
-  // // showRecipeDetails => (string: imagePath) {
-  // //   console.log(imagePath);
-  // // };
-
   showRecipeDetails(recipe: Recipe) {
-    this.recipeService.recipeSelected.emit(recipe);
+    this.recipeService.setSelectedRecipe(recipe);
   }
 
   constructor(private recipeService: RecipeService) { }
