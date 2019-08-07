@@ -7,11 +7,14 @@ import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/sh
 import { RecipeComponentComponent } from './recipe-component/recipe-component.component';
 import { RecipeStartComponent } from './recipe-component/recipe-item/recipe-detail/recipe-start/recipe-start.component';
 import { RecipeDetailComponent } from './recipe-component/recipe-item/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipe-component/recipe-item/recipe-edit/recipe-edit.component';
 
 const routes: Routes = [
   {path: 'shopping-list', component: ShoppingListComponent},
   {path: 'recipes', component: RecipeComponentComponent, children: [
+    {path: 'edit', component: RecipeEditComponent},
     {path: ':id', component: RecipeDetailComponent},
+    {path: ':id/edit', component: RecipeEditComponent},
     {path: '', component: RecipeStartComponent, pathMatch: 'full'},
   ]},
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},

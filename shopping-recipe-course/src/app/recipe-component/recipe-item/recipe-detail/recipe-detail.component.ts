@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from '../../recipe.service';
-import { ActivatedRouteSnapshot, RouterEvent, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterEvent, ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,14 +10,14 @@ import { ActivatedRouteSnapshot, RouterEvent, ActivatedRoute, Params } from '@an
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
+  recipeId: number;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    debugger;
     this.route.params.subscribe(
       (data: Params) => {
-        debugger;
+        this.recipeId = +data['id'];
         this.recipe = this.recipeService.getRecipe(+data['id']);
       }
     );
@@ -31,6 +31,10 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   editRecipe() {
-    this.recipeService.toggleRecipeEditMode();
+    // this.recipeService.toggleRecipeEditMode();
+  }
+
+  OnEditRecipe() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
   }
 }

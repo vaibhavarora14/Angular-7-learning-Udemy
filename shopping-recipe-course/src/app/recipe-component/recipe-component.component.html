@@ -2,10 +2,7 @@
   <div class="col-md-5">
     <app-recipe-list></app-recipe-list>
   </div>
-  <div class="col-md-7" *ngIf="!recipeEditMode">
+  <div class="col-md-7">
     <router-outlet></router-outlet>
-  </div>
-  <div class="col-md-7" *ngIf="recipeEditMode">
-    <app-recipe-edit></app-recipe-edit>
   </div>
 </div>
