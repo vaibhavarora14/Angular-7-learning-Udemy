@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  {
-  // @Output() navigatedPage = new EventEmitter<string>();
   selectedPage: string;
 
   constructor(private router: Router) {
@@ -16,8 +15,6 @@ export class HeaderComponent  {
 
   navigate(page: string) {
     this.router.navigate([page]);
-    // this.selectedPage = page;
-    // this.navigatedPage.emit(page);
   }
 }
 
