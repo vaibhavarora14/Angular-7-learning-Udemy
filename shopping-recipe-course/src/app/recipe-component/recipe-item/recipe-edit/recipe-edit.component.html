@@ -1,10 +1,10 @@
-<!-- <div class="row">
+<div class="row">
   <div class="col-12">
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-12">
           <button type="submit" name="save" id="save"
-                  class="btn btn-success btn-lg mr-2">Save</button>
+                  class="btn btn-success btn-lg mr-2" [disabled]="!recipeForm.valid" >Save</button>
           <button type="button" name="cancel" id="cancel"
                   class="btn btn-danger btn-lg">Cancel</button>
           <div class="form-group">
@@ -29,13 +29,13 @@
           <div class="col-8">
             <div class="form-group">
               <input type="text" name="ingredientName" id="ingredientName" class="form-control"
-                     formControlName="ingredientName">
+                     formControlName="name">
             </div>
           </div>
           <div class="col-2">
             <div class="form-group">
               <input type="number" name="ingredientAmount" id="ingredientAmount"
-                     class="form-control" formControlName="ingredientAmount">
+                     class="form-control" formControlName="amount">
             </div>
           </div>
           <div class="col-2">
@@ -45,15 +45,21 @@
             </div>
           </div>
         </div>
+        <hr>
+        <div class="row">
+          <div class="col-3">
+            <button type="button" name="addIngredientButton" id="addIngredientButton" class="btn btn-primary btn-lg btn-block" (click)="onAddIngredients()">Add Ingredient</button>
+          </div>
+        </div>
       </div>
     </form>
   </div>
-</div> -->
+</div>
 
 
-<div *ngIf="editMode">
+<!-- <div *ngIf="editMode">
   edit mode
 </div>
 <div *ngIf="!editMode">
   non-edit mode
-</div>
+</div> -->
