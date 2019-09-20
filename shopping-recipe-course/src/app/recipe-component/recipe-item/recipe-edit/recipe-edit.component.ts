@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, AbstractControl, Validators } from '@angular/forms';
 import { RecipeService } from '../../recipe.service';
 import { Recipe } from '../../recipe.model';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Ingredient } from 'src/app/shared/ingredient.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -11,18 +10,20 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 })
 export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
   recipeIngredients = new FormArray([]);
   recipe: Recipe;
   editMode: boolean;
   id: number;
 
   ngOnInit() {
+    debugger;
     this.initForm();
     this.getIngredients();
 
     this.route.params.subscribe(
       (params: Params) => {
+        debugger;
         this.editMode = params['id'] != null;
 
         if (this.editMode) {
@@ -47,6 +48,12 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.recipeService.addRecipe(newRecipe);
     }
+
+    this.navigateBack();
+  }
+
+  navigateBack() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   getIngredients(): AbstractControl[] {
